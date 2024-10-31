@@ -1,0 +1,25 @@
+<svg width="99.570801" height="255.200684" viewBox="0 0 99.5708 255.201" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<filter id="filter_2_666_dd" x="0.000000" y="0.000000" width="99.570801" height="255.200684" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+			<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+			<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+			<feGaussianBlur stdDeviation="0.333333" result="effect_layerBlur_1"/>
+		</filter>
+		<linearGradient x1="49.589523" y1="206.595551" x2="50.292324" y2="254.200592" id="paint_linear_2_667_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00FFF0"/>
+			<stop offset="1.000000" stop-color="#009990"/>
+		</linearGradient>
+		<linearGradient x1="1.311401" y1="-26.571371" x2="1.743938" y2="49.524475" id="paint_linear_2_669_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00FFF0"/>
+			<stop offset="1.000000" stop-color="#009990"/>
+		</linearGradient>
+	</defs>
+	<g filter="url(#filter_2_666_dd)">
+		<rect id="Rectangle 32" x="2.284912" y="159.226562" width="96.014839" height="94.974037" fill="url(#paint_linear_2_667_0)" fill-opacity="1.000000"/>
+		<ellipse id="Ellipse 11" cx="50.292236" cy="158.726807" rx="48.007420" ry="47.487019" fill="#00FFF0" fill-opacity="1.000000"/>
+		<ellipse id="Ellipse 12" rx="48.512749" ry="47.986893" transform="matrix(-0.999985 -0.00557458 0.00569743 -0.999984 49.7854 49.2566)" fill="url(#paint_linear_2_669_0)" fill-opacity="1.000000"/>
+	</g>
+</svg>

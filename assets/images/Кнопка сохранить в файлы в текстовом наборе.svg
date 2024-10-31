@@ -1,0 +1,27 @@
+<svg width="156.457031" height="156.457031" viewBox="0 0 156.457 156.457" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="78.228546" y1="0.000000" x2="78.228546" y2="156.457092" id="paint_linear_2_686_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00C3B7"/>
+			<stop offset="1.000000" stop-color="#00B3A8"/>
+		</linearGradient>
+		<linearGradient x1="78.228546" y1="0.000000" x2="78.228546" y2="156.457092" id="paint_linear_2_686_1" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00B3A8"/>
+			<stop offset="1.000000" stop-color="#005D57"/>
+		</linearGradient>
+		<linearGradient x1="79.877579" y1="38.347412" x2="80.360840" y2="78.451027" id="paint_linear_2_687_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#78A09D"/>
+			<stop offset="1.000000" stop-color="#2B3A39"/>
+		</linearGradient>
+		<linearGradient x1="77.461433" y1="49.943604" x2="77.461433" y2="112.756531" id="paint_linear_2_688_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#97C6C3"/>
+			<stop offset="1.000000" stop-color="#78A09D"/>
+		</linearGradient>
+	</defs>
+	<circle id="Ellipse 3 в текстовом наборе" cx="78.228516" cy="78.228516" r="78.228546" fill="url(#paint_linear_2_686_0)" fill-opacity="1.000000"/>
+	<circle id="Ellipse 3 в текстовом наборе" cx="78.228516" cy="78.228516" r="74.228546" stroke="url(#paint_linear_2_686_1)" stroke-opacity="1.000000" stroke-width="8.000000"/>
+	<path id="Rectangle 10 в текстовом наборе" d="M33.97 38.34L125.77 38.34L125.77 95.36L33.97 95.36L33.97 38.34Z" fill="url(#paint_linear_2_687_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+	<path id="Subtract в текстовом наборе" d="M125.779 49.9436L65.3728 49.9436L29.1438 73.6193L29.1438 112.756L125.779 112.756L125.779 49.9436Z" clip-rule="evenodd" fill="url(#paint_linear_2_688_0)" fill-opacity="1.000000" fill-rule="evenodd"/>
+</svg>

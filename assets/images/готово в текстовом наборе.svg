@@ -1,0 +1,27 @@
+<svg width="162.000000" height="162.000000" viewBox="0 0 162 162" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="81.000000" y1="0.000000" x2="81.000000" y2="162.000000" id="paint_linear_2_675_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00C3B7"/>
+			<stop offset="1.000000" stop-color="#00B3A8"/>
+		</linearGradient>
+		<linearGradient x1="81.000000" y1="0.000000" x2="81.000000" y2="162.000000" id="paint_linear_2_675_1" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00B3A8"/>
+			<stop offset="1.000000" stop-color="#005D57"/>
+		</linearGradient>
+		<linearGradient x1="127.010117" y1="59.176880" x2="127.010117" y2="125.323952" id="paint_linear_2_676_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#97C6C3"/>
+			<stop offset="1.000000" stop-color="#78A09D"/>
+		</linearGradient>
+		<linearGradient x1="31.039646" y1="90.043076" x2="31.039646" y2="135.941147" id="paint_linear_2_677_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#97C6C3"/>
+			<stop offset="1.000000" stop-color="#78A09D"/>
+		</linearGradient>
+	</defs>
+	<circle id="кнопка готово в тексте" cx="81.000000" cy="81.000000" r="81.000000" fill="url(#paint_linear_2_675_0)" fill-opacity="1.000000"/>
+	<circle id="кнопка готово в тексте" cx="81.000000" cy="81.000000" r="77.000000" stroke="url(#paint_linear_2_675_1)" stroke-opacity="1.000000" stroke-width="8.000000"/>
+	<rect id="вторая палка галочки" x="119.793945" y="31.764648" rx="7.113150" width="14.226300" height="107.244415" transform="rotate(33.2255 119.793945 31.764648)" fill="url(#paint_linear_2_676_0)" fill-opacity="1.000000"/>
+	<rect id="палка галочки" x="23.823486" y="71.022339" rx="7.113150" width="14.226300" height="74.414490" transform="rotate(-37.2769 23.823486 71.022339)" fill="url(#paint_linear_2_677_0)" fill-opacity="1.000000"/>
+</svg>

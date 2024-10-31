@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dispyro
+Version: 0.2.0
+Summary: Improved dispatching for Pyrogram
+Home-page: https://github.com/asteroid-den/dispyro/
+Author: asteroid-den
+Author-email: denbartolomee@gmail.com
+License: MIT
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.7
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pyrogram >=2.0
+
+# dispyro
+Improved dispatching for Pyrogram

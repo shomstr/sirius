@@ -1,0 +1,20 @@
+<svg width="227.811768" height="219.215088" viewBox="0 0 227.812 219.215" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+	<desc>
+			Created with Pixso.
+	</desc>
+	<defs>
+		<linearGradient x1="73.964890" y1="36.535839" x2="73.964890" y2="354.612854" id="paint_linear_2_659_0" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#00C3B7"/>
+			<stop offset="1.000000" stop-color="#005D57"/>
+		</linearGradient>
+	</defs>
+	<rect rx="109.607544" width="227.811752" height="219.215088" fill="url(#paint_linear_2_659_0)" fill-opacity="1.000000"/>
+	<rect x="0.500000" y="0.500000" rx="109.107544" width="226.811752" height="218.215088" stroke="#00B3A8" stroke-opacity="1.000000" stroke-width="1.000000"/>
+	<path d="M177.4 94.02C177.4 119.83 157.45 140.75 132.84 140.75C108.23 140.75 88.28 119.83 88.28 94.02C88.28 68.2 108.23 47.28 132.84 47.28C157.45 47.28 177.4 68.2 177.4 94.02Z" fill="#00FFF0" fill-opacity="1.000000" fill-rule="nonzero"/>
+	<linearGradient x1="116.640778" y1="47.281494" x2="116.640778" y2="176.231552" id="paint_linear_2_6601_0" gradientUnits="userSpaceOnUse">
+		<stop stop-color="#00C3B7"/>
+		<stop offset="1.000000" stop-color="#005D57"/>
+	</linearGradient>
+	<path d="M166.06 93.59C166.06 112.6 151.37 128.01 133.24 128.01C115.12 128.01 100.43 112.6 100.43 93.59C100.43 74.58 115.12 59.17 133.24 59.17C151.37 59.17 166.06 74.58 166.06 93.59Z" fill="url(#paint_linear_2_6601_0)" fill-opacity="1.000000" fill-rule="nonzero"/>
+	<path d="M96.85 124.74C98.6 122.82 101.6 122.75 103.44 124.59L103.44 124.59C105.16 126.31 105.22 129.08 103.59 130.88L65.54 172.69C63.78 174.62 60.78 174.69 58.94 172.85L58.94 172.85C57.22 171.13 57.16 168.36 58.8 166.56L96.85 124.74Z" fill="#00FFF0" fill-opacity="1.000000" fill-rule="nonzero"/>
+</svg>
