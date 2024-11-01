@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sirius/design/colors.dart';
 
 class MainItem extends StatelessWidget {
-  final String title; // Добавляем поле для названия кнопки
+  final String title; 
 
   const MainItem({Key? key, required this.title}) : super(key: key);
 
@@ -17,7 +17,7 @@ class MainItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
         onTap: () {
           // ignore: avoid_print
-          print('Press $title'); // Выводим название кнопки
+          print('Press $title'); 
         },
         child: SizedBox(
           height: 128,
@@ -25,7 +25,7 @@ class MainItem extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.only(left: 8, right: 16),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center, // Центрирование содержимого
+              mainAxisAlignment: MainAxisAlignment.center, 
               children: <Widget>[
                 _title(),
               ],
@@ -38,7 +38,7 @@ class MainItem extends StatelessWidget {
 
   Widget _title() {
     return Text(
-      title, // Используем переданное название
+      title,
       textAlign: TextAlign.center,
       style: const TextStyle(
         fontSize: 40,
