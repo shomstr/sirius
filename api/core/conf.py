@@ -21,6 +21,8 @@ class Settings(BaseSettings):
     REDIS_HOST: str
     REDIS_PORT: int
 
+    YANDEX_TOKEN: str
+
     LOG_STDOUT_FILENAME: str = 'fsm_access.log'
     LOG_STDERR_FILENAME: str = 'fsm_error.log'
 

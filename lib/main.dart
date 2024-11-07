@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:sirius/pages/mian_page/main_page.dart';
+import 'package:sirius/pages/login/login_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); 
+  await Hive.initFlutter(); 
   runApp(const MyApp());
 }
 
@@ -12,11 +14,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Voice Input App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const HomePage(), 
+      title: 'Литририус',
+      home: LoginPage(), 
     );
   }
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sirius/design/images.dart';
-import 'package:sirius/pages/text_input_page/text_input.dart';
-import 'package:sirius/pages/voice_input_page/voice_input.dart';
+import 'package:sirius/pages/friends/friends_page.dart';
+import 'package:sirius/pages/text_input_page/text_input_page.dart';
+import 'package:sirius/pages/upload_files/upload.dart';
+import 'package:sirius/pages/voice_input_page/voice_input_page.dart';
 
 class MainList extends StatelessWidget {
   const MainList({Key? key}) : super(key: key);
@@ -14,7 +16,7 @@ class MainList extends StatelessWidget {
         _list(context),
         _burger_button(),
         _cards_button(),
-        _friends_button(),
+        _friends_button(context),
         _searching_bar(),
         _search_button(),
       ],
@@ -61,12 +63,17 @@ class MainList extends StatelessWidget {
           if (title == 'Голосовой ввод') {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const VoiceInputPage()),
+              MaterialPageRoute(builder: (context) => VoiceInputPage()),
             );
           } else if (title == 'Письменный ввод') {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const TextInputPage()),
+            );
+          } else if (title == 'Загрузка файлов') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => UploadFilePage()),
             );
           }
         },
@@ -160,7 +167,7 @@ class MainList extends StatelessWidget {
     );
   }
 
-  Widget _friends_button() {
+  Widget _friends_button(BuildContext context) {
     return Positioned(
       right: 38,
       top: 99,
@@ -169,6 +176,13 @@ class MainList extends StatelessWidget {
           if (kDebugMode) {
             print('Cards button pressed!');
           }
+          // Перенаправление на страницу друзей
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) =>
+                    FriendsPage()), // Замените FriendsPage на ваш класс страницы друзей
+          );
         },
         child: Container(
           width: 158,
@@ -224,67 +238,67 @@ class MainList extends StatelessWidget {
       ),
     );
   }
-}
 
-Widget _searching_bar() {
-  return Positioned(
-    left: 84,
-    top: 35,
-    child: GestureDetector(
-      onTap: () {
-        if (kDebugMode) {
-          print('Burger button pressed!');
-        }
-      },
-      child: Container(
-        width: 210,
-        height: 41,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: const Color.fromARGB(255, 0, 179, 168),
-            width: 2,
+  Widget _searching_bar() {
+    return Positioned(
+      left: 84,
+      top: 35,
+      child: GestureDetector(
+        onTap: () {
+          if (kDebugMode) {
+            print('Burger button pressed!');
+          }
+        },
+        child: Container(
+          width: 210,
+          height: 41,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: const Color.fromARGB(255, 0, 179, 168),
+              width: 2,
+            ),
           ),
-        ),
-        child: const Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.search),
-            SizedBox(width: 8),
-            Expanded(
-              child: TextField(
-                decoration: InputDecoration(
-                  hintText: 'Главное меню',
-                  hintStyle: TextStyle(
-                    color: Color.fromARGB(255, 255, 240, 240),
-                    fontSize: 18,
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(Icons.search),
+              SizedBox(width: 8),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Главное меню',
+                    hintStyle: TextStyle(
+                      color: Color.fromARGB(255, 255, 240, 240),
+                      fontSize: 18,
+                    ),
+                    border: InputBorder.none,
                   ),
-                  border: InputBorder.none,
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
-    ),
-  );
-}
+    );
+  }
 
-Widget _search_button() {
-  return Positioned(
-    left: 194,
-    top: 35,
-    child: GestureDetector(
-      onTap: () {
-        if (kDebugMode) {
-          print('Burger button pressed!');
-        }
-      },
-      child: SizedBox(
-        width: 280,
-        height: 41,
-        child: SearchbarButton,
+  Widget _search_button() {
+    return Positioned(
+      left: 194,
+      top: 35,
+      child: GestureDetector(
+        onTap: () {
+          if (kDebugMode) {
+            print('Burger button pressed!');
+          }
+        },
+        child: SizedBox(
+          width: 280,
+          height: 41,
+          child: SearchbarButton,
+        ),
       ),
-    ),
-  );
+    );
+  }
 }

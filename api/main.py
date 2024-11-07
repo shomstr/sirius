@@ -5,6 +5,7 @@ from models import Base
 from configuration.server import Server
 from fastapi import Depends
 from sqlalchemy import URL
+
 from typing import AsyncGenerator as async_generator
 from sqlalchemy.ext.asyncio import AsyncSession 
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
@@ -41,13 +42,10 @@ def create_app(_=None) -> FastAPI:
       server = Server(app)
       return server.get_app()
    
-   @app.post("/transcribe")
-   async def transcribe(transcription: Transcription):
-      print(f"Received transcription: {transcription.text}")
-      return {"message": "Transcription received", "text": transcription.text}
    
+
    return app
 
 if __name__ == '__main__':
    import uvicorn
-   uvicorn.run(create_app(), host="127.0.0.1", port=8000, reload=True)
+   uvicorn.run(create_app(), host="127.0.0.1", port=8000)
