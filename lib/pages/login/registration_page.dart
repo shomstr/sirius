@@ -21,7 +21,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     if (_formKey.currentState!.validate()) {
       try {
         final response = await http.post(
-          Uri.parse('http://127.0.0.1:8000/register'),
+          Uri.parse('http://10.0.2.2:8000/register'), 
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             'email': email,

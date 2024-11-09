@@ -7,16 +7,15 @@ class FriendsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text('Профиль пользователя')),
       body: FutureBuilder(
-        future: Hive.openBox('userBox'), // Открытие коробки Hive
+        future: Hive.openBox('userBox'), 
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           }
 
-          var box = snapshot.data as Box; // Получение данных из коробки
+          var box = snapshot.data as Box; 
           String? username = box.get('username'); 
-          String? id = box.get('id'); 
-
+          var id = box.get('id'); 
           return Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -30,14 +29,14 @@ class FriendsPage extends StatelessWidget {
                   username ?? 'Не указано',
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20), // Добавляем отступ между текстами
+                SizedBox(height: 20), 
                 Text(
                   'ID пользователя:',
                   style: TextStyle(fontSize: 24),
                 ),
                 SizedBox(height: 10),
                 Text(
-                  id?.toString() ?? 'Не указано',
+                  id != null ? id.toString() : 'Не указано', 
                   style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
                 ),
               ],

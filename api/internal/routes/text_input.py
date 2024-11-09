@@ -17,6 +17,7 @@ class TextInput(BaseModel):
 async def submit_text(input_data: TextInput, db: AsyncSession = Depends(get_db)):
     try:
         summ = summarize.translate_and_summarize(input_data.text)
+        print(summ)
         return {"message": summ}
     except Exception as e:
         raise HTTPException(
