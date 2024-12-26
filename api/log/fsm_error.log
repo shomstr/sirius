@@ -1,0 +1,28 @@
+2024-12-05 17:07:29.317 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:posgresql.aiopg
+2024-12-05 17:08:09.309 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:posgresql.aiopg
+2024-12-05 17:09:40.777 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:posgresql.aiopg
+2024-12-05 17:10:50.419 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:posgresql.aiopg
+2024-12-05 17:11:49.407 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:12:10.620 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:13:04.987 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:13:27.754 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:17:00.240 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:18:19.207 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:18:22.507 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:21:15.659 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:22:44.282 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:24:18.065 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:24:25.051 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:25:42.325 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:29:39.298 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgres.aiopg
+2024-12-05 17:31:37.928 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error The asyncio extension requires an async driver to be used. The loaded 'psycopg2' is not async.
+2024-12-05 17:33:58.994 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Could not parse SQLAlchemy URL from string ' postgresql+aiopg://fufa:fufik123@localhost:3306/clinic?charset=utf8'
+2024-12-05 17:36:10.285 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:36:18.760 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgres.aiopg
+2024-12-05 17:36:39.772 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 17:37:21.446 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgres.aiopg
+2024-12-05 17:38:16.801 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgres.aiopg
+2024-12-05 17:38:28.660 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgre.aiopg
+2024-12-05 17:43:58.274 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error Can't load plugin: sqlalchemy.dialects:postgresql.aiopg
+2024-12-05 21:59:53.927 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error The asyncio extension requires an async driver to be used. The loaded 'psycopg2' is not async.
+2024-12-24 17:55:09.380 | ERROR    | database.db_postgresql:create_engine_and_session:28 - error No module named 'asyncpg'
