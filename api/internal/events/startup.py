@@ -16,7 +16,7 @@ import aiohttp
 async def on_startup():
 
     await create_table()
-    print('Запуск...')
+    print('Успешно запущено')
 
 async def on_loop_startup():
     print('Остановка')

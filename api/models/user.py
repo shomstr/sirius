@@ -14,6 +14,9 @@ from models import Base
 
 
 class Users_data(Base):
+    __tablename__ = "users_data"
+
+    id: Mapped[int] = mapped_column(primary_key=True, unique=True, autoincrement=True)
     password: Mapped[str] = mapped_column(TEXT)
     name: Mapped[str] = mapped_column(TEXT)
     login: Mapped[str] = mapped_column(TEXT)
@@ -34,24 +37,3 @@ class Users_data(Base):
         result = await db.execute(query)
         return result.scalars().first()
 
-
-class City_User(Base):
-    __tablename__ = "city_user" 
-    user_id: Mapped[int] = mapped_column(BIGINT, ForeignKey("users_data.id"), primary_key=True) 
-    city_id: Mapped[int] = mapped_column(BIGINT, primary_key=True)
-
-    @staticmethod
-    async def add_city(db: AsyncSession, user_id: int, city_id: int) -> "City_User": 
-        city = City_User(user_id=user_id, city_id=city_id) 
-        db.add(city) 
-        await db.commit()
-        await db.refresh(city) 
-        return city
-
-class City(Base):
-    name: Mapped[str] = mapped_column(TEXT) 
-
-
-class Hospital(Base):
-    hospital_name: Mapped[str] = mapped_column(TEXT)
-    city_id: Mapped[int] = mapped_column(BIGINT, ForeignKey("city.id")) 

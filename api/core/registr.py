@@ -12,8 +12,8 @@ from middleware.access_middle import AccessMiddleware
 
 logger = logging.getLogger(__name__)
 
-def logs():
-    logging.basicConfig(
+
+logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
     handlers=[
@@ -22,5 +22,23 @@ def logs():
     ]
     )
 
-# Установка уровня логирования для SQLAlchemy
-    logging.getLogger("sqlalchemy.engine").setLevel(logging.ERROR)
+logging.getLogger("sqlalchemy.engine").setLevel(logging.CRITICAL)
+
+def get_start(app: FastAPI):
+    app = FastAPI(
+        title='FastAPI',
+        description='Fast API'
+    )
+
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
+
+    print('Запуск...')
+    app.add_middleware(AccessMiddleware)
+
+    return app

@@ -3,38 +3,13 @@ from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 from configuration.server import Server
 from internal.events.startup import on_startup
-
-# Настройка логирования
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
-    handlers=[
-        logging.FileHandler("app.log"),
-        logging.StreamHandler()
-    ]
-)
-
-# Установка уровня логирования для SQLAlchemy
-logging.getLogger("sqlalchemy.engine").setLevel(logging.ERROR)
-
-logger = logging.getLogger(__name__)
+from core.registr import get_start
 
 def create_app(_=None) -> FastAPI:
-    app = FastAPI(
-        title='FastAPI',
-        description='Fast API'
-    )
-
-    app.add_middleware(
-        CORSMiddleware,
-        allow_origins=["*"],
-        allow_credentials=True,
-        allow_methods=["*"],
-        allow_headers=["*"],
-    )
-
+    app = get_start(app=FastAPI)
     server = Server(app)
     return server.get_app()
+    return app
 
 if __name__ == '__main__':
     import uvicorn
