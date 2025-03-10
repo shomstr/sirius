@@ -8,26 +8,26 @@ import {
   YandexMapGeolocationControl,
 } from 'vue-yandex-maps';
 
-// Состояние для хранения координат пользователя
 const userCoords = ref(null);
 
-// Функция для получения геолокации
+const isModalOpen = ref(false);
+
+const selectedMarker = ref(null);
+
 const getUserLocation = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
-        // Успешно получены координаты
         userCoords.value = [position.coords.latitude, position.coords.longitude];
       },
       (error) => {
-        // Ошибка при получении координат
         console.error('Ошибка при получении геолокации:', error);
         alert('Не удалось получить ваше местоположение. Пожалуйста, разрешите доступ к геолокации.');
       },
       {
-        enableHighAccuracy: true, // Высокая точность
-        timeout: 5000, // Максимальное время ожидания
-        maximumAge: 0, // Не использовать кэшированные данные
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0, 
       }
     );
   } else {
@@ -36,29 +36,34 @@ const getUserLocation = () => {
   }
 };
 
-// Получаем геолокацию при монтировании компонента
 onMounted(() => {
   getUserLocation();
 });
 
 const ImagePath = '/station.svg';
-// Массив маркеров
+
 const markers = [
   {
-    coordinates: [51.789682128109, 55.140428698122], // Координаты первого маркера
+    coordinates: [51.789682128109, 55.140428698122],
     id: 'marker-1',
-    content: 'ma',
+    content: 'Маркер 1',
   },
   {
-    coordinates: [54.76778893634, 57.108481458691], // Координаты второго маркера
+    coordinates: [54.76778893634, 57.108481458691],
     id: 'marker-2',
     content: 'Маркер 2',
   },
 ];
 
-// Обработчик клика на маркер
 const handleMarkerClick = (marker) => {
   console.log('Маркер кликнут:', marker.content);
+  selectedMarker.value = marker;
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+  selectedMarker.value = null;
 };
 </script>
 
@@ -78,7 +83,6 @@ const handleMarkerClick = (marker) => {
       <YandexMapDefaultSchemeLayer />
       <YandexMapDefaultFeaturesLayer />
       
-      <!-- Маркер пользователя -->
       <YandexMapMarker
         :settings="{
           coordinates: userCoords,
@@ -88,7 +92,6 @@ const handleMarkerClick = (marker) => {
         <div class="w-[20px] h-[20px] relative bg-blue-500 opacity-80 rounded-full"></div>
       </YandexMapMarker>
 
-      <!-- Дополнительные маркеры -->
       <YandexMapMarker
         v-for="marker in markers"
         :key="marker.id"
@@ -98,10 +101,18 @@ const handleMarkerClick = (marker) => {
         }"
         @click="handleMarkerClick(marker)"
       >
-      <img :src="ImagePath" class="object-cover" />
+        <img :src="ImagePath" class="object-cover" />
         <div class="marker">{{ marker.content }}</div>
       </YandexMapMarker>
     </YandexMap>
+    
+    <div v-if="isModalOpen" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-xl font-bold mb-4">Информация о маркере</h2>
+        <p>{{ selectedMarker.content }}</p>
+        <button @click="closeModal" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Закрыть</button>
+      </div>
+    </div>
   </div>
 </template>
 
