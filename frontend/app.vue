@@ -1,96 +1,28 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-import {
-  YandexMap,
-  YandexMapDefaultSchemeLayer,
-  YandexMapMarker,
-  YandexMapDefaultFeaturesLayer,
-  YandexMapGeolocationControl,
-} from 'vue-yandex-maps';
-
-const userCoords = ref(null);
-
-const isModalOpen = ref(false);
-
-const selectedMarker = ref(null);
-
-const getUserLocation = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        userCoords.value = [position.coords.latitude, position.coords.longitude];
-      },
-      (error) => {
-        console.error('Ошибка при получении геолокации:', error);
-        alert('Не удалось получить ваше местоположение. Пожалуйста, разрешите доступ к геолокации.');
-      },
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0, 
-      }
-    );
-  } else {
-    console.error('Геолокация не поддерживается вашим браузером');
-    alert('Ваш браузер не поддерживает геолокацию.');
-  }
-};
-
-onMounted(() => {
-  getUserLocation();
-});
-
-const ImagePath = '/station.svg';
-
-const markers = [
-  {
-    coordinates: [51.789682128109, 55.140428698122],
-    id: 'marker-1',
-    content: 'Маркер 1',
-  },
-  {
-    coordinates: [54.76778893634, 57.108481458691],
-    id: 'marker-2',
-    content: 'Маркер 2',
-  },
-];
-
-const handleMarkerClick = (marker) => {
-  console.log('Маркер кликнут:', marker.content);
-  selectedMarker.value = marker;
-  isModalOpen.value = true;
-};
-
-const closeModal = () => {
-  isModalOpen.value = false;
-  selectedMarker.value = null;
-};
-</script>
-
 <template>
   <div class="w-full h-screen">
     <YandexMap
-      v-if="userCoords"
       :settings="{
         location: {
-          center: userCoords,
-          zoom: 17,
+          center: [55.45, 37.36],
+          zoom: 10, 
         }
       }"
       width="100%"
       height="100%"
     >
-      <YandexMapDefaultSchemeLayer />
-      <YandexMapDefaultFeaturesLayer />
-      
-      <YandexMapMarker
-        :settings="{
-          coordinates: userCoords,
-          id: 'user-location',
-        }"
-      >
-        <div class="w-[20px] h-[20px] relative bg-blue-500 opacity-80 rounded-full"></div>
-      </YandexMapMarker>
+      <yandex-map-default-scheme-layer/>
+      <yandex-map-default-features-layer/>
+      <yandex-map-controls :settings="{ position: 'right' }">
+        <yandex-map-zoom-control/>
+      </yandex-map-controls>
+      <yandex-map-controls :settings="{ position: 'bottom' }">
+        <yandex-map-zoom-control/>
+        <yandex-map-scale-control/>
+      </yandex-map-controls>
+      <yandex-map-controls :settings="{ position: 'left' }">
+    
+        <yandex-map-geolocation-control/>
+      </yandex-map-controls>
 
       <YandexMapMarker
         v-for="marker in markers"
@@ -116,16 +48,51 @@ const closeModal = () => {
   </div>
 </template>
 
-<style>
-html, body, #__nuxt {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+<script setup>
+import { ref } from 'vue';
+import {
+  YandexMap,
+  YandexMapDefaultSchemeLayer,
+  YandexMapMarker,
+  YandexMapDefaultFeaturesLayer,
+  YandexMapZoomControl,
+  YandexMapScaleControl,
+  YandexMapGeolocationControl, YandexMapControls
+} from 'vue-yandex-maps';
 
+const isModalOpen = ref(false);
+const selectedMarker = ref(null);
+
+const handleMarkerClick = (marker) => {
+  console.log('Маркер кликнут:', marker.content);
+  selectedMarker.value = marker;
+  isModalOpen.value = true;
+};
+
+const closeModal = () => {
+  isModalOpen.value = false;
+  selectedMarker.value = null;
+};
+
+const ImagePath = '/station.svg';
+
+const markers = [
+  {
+    coordinates: [55.751244, 37.618423],
+    id: 'marker-1',
+    content: 'Маркер 1',
+  },
+  {
+    coordinates: [54.76778893634, 57.108481458691],
+    id: 'marker-2',
+    content: 'Маркер 2',
+  },
+];
+</script>
+
+<style scoped>
 .marker {
-  position: relative;
-  width: 20px;
-  height: 20px;
+  color: #196dff;
+  font-weight: bold;
 }
 </style>
