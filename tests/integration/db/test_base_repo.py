@@ -3,7 +3,7 @@ from api.database.models import User
 from tests.integration.db.data import LIST_TEST_USERS, TEST_USER
 
 
-async def test_create(repo: Repositories):
+async def test_create(db: AsyncSession):
     us = await repo.users.create_from_model(TEST_USER)
 
     assert us.id == TEST_USER.id
@@ -11,7 +11,7 @@ async def test_create(repo: Repositories):
     assert us.id == TEST_USER.id
 
 
-async def test_get(repo: Repositories):
+async def test_get(db: AsyncSession):
     us = await repo.users.create_from_model(TEST_USER)
     user = await repo.users.get(TEST_USER.id)
 
@@ -22,7 +22,7 @@ async def test_get(repo: Repositories):
     assert us.id == user.id
 
 
-async def test_update(repo: Repositories):
+async def test_update(db: AsyncSession):
     await repo.users.create_from_model(TEST_USER)
     us: User = await repo.users.get(TEST_USER.id)
 
@@ -36,7 +36,7 @@ async def test_update(repo: Repositories):
     assert us.username is None
 
 
-async def test_delete(repo: Repositories):
+async def test_delete(db: AsyncSession):
     us = await repo.users.create_from_model(TEST_USER)
     await repo.users.delete(us)
 
@@ -44,7 +44,7 @@ async def test_delete(repo: Repositories):
     assert us is None
 
 
-async def test_get_all(repo: Repositories):
+async def test_get_all(db: AsyncSession):
     await repo.users.create_from_model(*LIST_TEST_USERS)
 
     all_users = await repo.users.get_all()

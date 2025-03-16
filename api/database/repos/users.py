@@ -5,11 +5,11 @@ from sqlalchemy import select
 from sqlalchemy.orm import selectinload
 
 from .base import BaseRepo
-from api.database.models import User
+from api.database.models import User_data
 
 
 class UsersRepo(BaseRepo):
-    model = User
+    model = User_data
 
 
 
