@@ -21,7 +21,7 @@ engine = create_async_engine(URL, future=True, poolclass=NullPool)
 sessionmaker = async_sessionmaker(bind=engine, expire_on_commit=False, autoflush=False)
 
 
-@asynccontextmanager
+
 async def get_repo() -> AsyncGenerator[Repositories, None]:
     async with sessionmaker() as s:
         logger.debug("session was create")

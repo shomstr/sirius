@@ -11,11 +11,13 @@ from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.postgresql import VARCHAR, BIGINT, TEXT
 
 from .base_models import Base
+from .types import intpk
 
 
 class User_data(Base):
     __tablename__ = "users_data"
 
+    id: Mapped[intpk]
     password: Mapped[str] = mapped_column(TEXT)
     name: Mapped[str] = mapped_column(TEXT)
     login: Mapped[str] = mapped_column(TEXT)

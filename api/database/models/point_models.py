@@ -10,7 +10,7 @@ from sqlalchemy.orm import Mapped, relationship, joinedload
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.mysql import VARCHAR, DATETIME
 from .base_models import Base
-from .types import str255
+from .types import str255, intpk
 
 
 # {
@@ -53,6 +53,7 @@ from .types import str255
 class Point(Base):
     __tablename__ = "points"
 
+    id: Mapped[intpk]
     name: Mapped[str255]
 
     active: Mapped[bool] = mapped_column(server_default=sql.false())
@@ -68,7 +69,7 @@ class Point(Base):
         uselist=False,
         passive_deletes=True,
         cascade="all, delete",
-        post_update=True,
+        post_update=True
     )
 
     opening_times: Mapped["PointOpeningTime"] = relationship(
@@ -125,7 +126,8 @@ class Point(Base):
 
 class PointCoordinate(Base):
     __tablename__ = "points_coordinates"
-    point_id: Mapped[int] = mapped_column(Integer, ForeignKey(Point.id, ondelete="CASCADE"), nullable=False)
+
+    point_id: Mapped[int] = mapped_column(Integer, ForeignKey(Point.id, ondelete="CASCADE"), nullable=False, primary_key=True)
 
     latitude: Mapped[float]
     longitude: Mapped[float]
@@ -150,7 +152,7 @@ class PointCoordinate(Base):
 class PointOpeningTime(Base):
     __tablename__ = "points_opening_times"
 
-    point_id: Mapped[int] = mapped_column(Integer, ForeignKey(Point.id, ondelete="CASCADE"), nullable=False)
+    point_id: Mapped[int] = mapped_column(Integer, ForeignKey(Point.id, ondelete="CASCADE"), nullable=False, primary_key=True)
 
     always_open: Mapped[bool] = mapped_column(server_default=sql.false())
     #open_hours = []
@@ -178,6 +180,7 @@ class PointOpeningTime(Base):
 class PointConnector(Base):
     __tablename__ = "points_connectors"
 
+    id: Mapped[intpk]
     point_id: Mapped[int] = mapped_column(Integer, ForeignKey(Point.id, ondelete="CASCADE"), nullable=False)
 
     name: Mapped[str255]
