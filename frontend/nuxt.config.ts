@@ -5,17 +5,20 @@ export default defineNuxtConfig({
   modules: [
     "@nuxtjs/tailwindcss",
     '@pinia/nuxt',
-    'vue-yandex-maps/nuxt', // Модуль для Яндекс.Карт
+    'vue-yandex-maps/nuxt', 
   ],
 
   yandexMaps: {
-    apikey: '8ba27128-1da0-440b-a8c4-a55608c42593', // Ваш API-ключ
-    lang: 'ru_RU', // Язык карты
+    apikey: '8ba27128-1da0-440b-a8c4-a55608c42593',
+    lang: 'ru_RU',
   },
 
   plugins: [
-    { src: '@/plugins/ymapPlugin.js', mode: 'client' }, // Плагин для Яндекс.Карт
+    { src: '@/plugins/ymapPlugin.js', mode: 'client' },
   ],
-
+  routeRules: {
+    '/': { redirect: 'home' },
+  },
+  
   compatibilityDate: '2025-03-09',
 });
