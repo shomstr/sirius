@@ -35,6 +35,20 @@
         <div class="marker">{{ marker.id }}</div>
       </YandexMapMarker>
     </YandexMap>
+
+    <div v-if="selectedMarker" class="modal">
+      <div class="modal-content">
+        <span class="close" @click="closeModal">&times;</span>
+        <h2>Информация об "{{ selectedMarker.name }}"</h2>
+        <p>ID: {{ selectedMarker.id }}</p>
+        <p>Адрес: {{ selectedMarker.address }}</p>
+        <p>Активна: {{ selectedMarker.active ? 'Да' : 'Нет' }}</p>
+        <p>Коннектор: {{ selectedMarker.connector || 'Нет информации' }}</p>
+        <p>Описание: {{ selectedMarker.description || 'Нет описания' }}</p>
+        <p>Обновлено: {{ selectedMarker.changed_at || 'Нет Инф' }}</p>
+        <p>Details: {{ selectedMarker.details }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,35 +67,82 @@ import {
 } from 'vue-yandex-maps';
 
 const markers = ref([]);
+const selectedMarker = ref(null);
 const ImagePath = '/station.svg';
 
 const handleMarkerClick = async (marker) => {
   try {
     const response = await axios.get(`http://localhost:8000/point/${marker.id}`); 
-    console.log('Информация о маркере:', response.data);
+
+    selectedMarker.value = { 
+      id: marker.id, 
+      name: response.data.name, 
+      address: response.data.address, 
+      details: response.data,
+      active: response.data.active,
+      description: response.data.description,
+      connector: response.data.connector,
+      changed_at: response.data.changed_at
+
+    };
   } catch (error) {
     console.error('Ошибка при загрузке информации о маркере:', error);
   }
 };
 
+const closeModal = () => {
+  selectedMarker.value = null;
+};
+
 onMounted(async () => {
-     try {
-       const response = await axios.get('http://localhost:8000/get_all_points_coordinates/');
-       console.log('Данные с сервера:', response.data); // Проверка данных
-       markers.value = response.data.map(point => ({
-         coordinates: [point.longitude, point.latitude], // Убедитесь, что latitude и longitude в правильном порядке
-         id: point.point_id, 
-       }));
-       console.log('Маркеры:', markers.value); 
-     } catch (error) {
-       console.error('Ошибка при загрузке маркеров:', error);
-     }
-   });
+  try {
+    const response = await axios.get('http://localhost:8000/get_all_points_coordinates/');
+    markers.value = response.data.map(point => ({
+      coordinates: [point.longitude, point.latitude], 
+      id: point.point_id, 
+    }));
+  } catch (error) {
+    console.error('Ошибка при загрузке маркеров:', error);
+  }
+});
 </script>
 
 <style scoped>
 .marker {
   color: #196dff;
   font-weight: bold;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 </style>
