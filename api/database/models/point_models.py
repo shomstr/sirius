@@ -10,7 +10,7 @@ from sqlalchemy.orm import Mapped, relationship, joinedload
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.dialects.mysql import VARCHAR, DATETIME
 from .base_models import Base
-from .types import str255, intpk
+from .types import str255, intpk, str128
 
 
 # {
@@ -219,3 +219,17 @@ class PointConnector(Base):
         await db.commit()
 
         return con
+
+
+class CarWash(Base):
+    __tablename__ = "cars_washs"
+
+    id: Mapped[intpk]
+    car_id: Mapped[int]
+    started: Mapped[bool] = mapped_column(server_default=sql.false())
+    temperature: Mapped[int] = mapped_column(server_default="25")
+
+
+
+
+

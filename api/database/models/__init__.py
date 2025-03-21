@@ -1,6 +1,6 @@
 from .base_models import Base
 from .user_models import User_data
-from .point_models import Point, PointCoordinate, PointConnector, PointOpeningTime
+from .point_models import Point, PointCoordinate, PointConnector, PointOpeningTime, CarWash
 
 __all__ = [
     "Base",
@@ -8,5 +8,6 @@ __all__ = [
     "Point",
     "PointCoordinate",
     "PointConnector",
-    "PointOpeningTime"
+    "PointOpeningTime",
+    "CarWash"
 ]

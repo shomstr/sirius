@@ -3,6 +3,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from .car_wash import СarWashRepo
 from .point import PointsRepo
 from .users import UsersRepo
 
@@ -12,10 +13,11 @@ class Repositories:
     session: AsyncSession
     users: UsersRepo
     points: PointsRepo
+    wash: СarWashRepo
 
     @staticmethod
     def get_repo(session: AsyncSession) -> Repositories:
-        return Repositories(session=session, users=UsersRepo(session), points=PointsRepo(session))
+        return Repositories(session=session, users=UsersRepo(session), points=PointsRepo(session), wash=СarWashRepo(session))
 
 
 __all__ = [
