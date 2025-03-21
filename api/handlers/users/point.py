@@ -19,7 +19,7 @@ router = APIRouter()
 from fastapi import Depends, HTTPException
 # from api.database.models import Point
 
-router = APIRouter()
+router = APIRouter(prefix="/point")
 
 
 @router.post("/upload/")
@@ -30,7 +30,6 @@ async def upload_stations(file: UploadFile = File(...), repo: Repositories = Dep
     content = await file.read()
     try:
         data = json.loads(content)# Извлекаем массив станций
-        print("Получено", len(data["points"]))
     except json.JSONDecodeError:
         raise HTTPException(status_code=400, detail="Некорректный JSON-файл")
     c = 1
@@ -38,13 +37,13 @@ async def upload_stations(file: UploadFile = File(...), repo: Repositories = Dep
         try:
             p = Point(**point)
             await repo.points.create(p)
-            print(c)
             c += 1
 
         except ValidationError:
             raise HTTPException(status_code=400, detail="Некорректный JSON-файл")
 
-    return {"succes": "true"}
+    return {"status": "successful"}
+
 
 @router.get("/point/{point_id}")
 async def get_point(point_id: int, repo: Repositories = Depends(get_repo)):
