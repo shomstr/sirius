@@ -18,6 +18,7 @@ export default defineNuxtConfig({
   ],
   routeRules: {
     '/': { redirect: 'home' },
+    '/profile': { redirect: 'user' },
   },
   
   compatibilityDate: '2025-03-09',

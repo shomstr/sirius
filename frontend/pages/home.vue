@@ -129,7 +129,7 @@ const closeModal = () => {
 
 onMounted(async () => {
   try {
-    const response = await axios.get('http://localhost:8000/get_all_points_coordinates/');
+    const response = await axios.get('http://localhost:8000/point/get_all_points_coordinates/');
     markers.value = response.data.map(point => ({
       coordinates: [point.longitude, point.latitude], 
       id: point.point_id, 

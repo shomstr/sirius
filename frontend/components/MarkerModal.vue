@@ -1,52 +1,60 @@
 <template>
-  <div v-if="selectedMarker" class="modal">
+  <div class="modal">
     <div class="modal-content">
-      <span class="close" @click="closeModal">&times;</span>
-      <h2>Информация об "{{ selectedMarker.name }}"</h2>
-      <p>ID: {{ selectedMarker.id }}</p>
-      <p>Адрес: {{ selectedMarker.address }}</p>
+      <span class="close" @click="close">&times;</span>
+      <h2>Информация об "{{ marker.name }}"</h2>
+      <p>ID: {{ marker.id }}</p>
+      <p>Адрес: {{ marker.address }}</p>
       <p>
         Статус:
-        <span :class="{'status-active': selectedMarker.active, 'status-inactive': !selectedMarker.active}">
-          {{ selectedMarker.active ? 'Активна' : 'Неактивна' }}
+        <span :class="{'status-active': marker.active, 'status-inactive': !marker.active}">
+          {{ marker.active ? 'Активна' : 'Неактивна' }}
         </span>
       </p>
       <p>
         Режим работы:
-        <span :class="{'status-active': selectedMarker.details.opening_times?.always_open}">
-          {{ formatOpeningTimes(selectedMarker.details.opening_times) }}
+        <span :class="{'status-active': marker.details.opening_times?.always_open}">
+          {{ formatOpeningTimes(marker.details.opening_times) }}
         </span>
       </p>
       <p>Коннекторы:</p>
       <ul>
-        <li v-for="connector in selectedMarker.details.connectors" :key="connector.id">
+        <li v-for="connector in marker.details.connectors" :key="connector.id">
           {{ connector.connector }} ({{ connector.power }} кВт)
-          <br>
         </li>
       </ul>
-      <p>Описание: {{ selectedMarker.details.description || 'Нет описания' }}</p>
-      <button class="close_button" @click="closeModal">Закрыть</button>
+      <p>Описание: {{ marker.details.description || 'Нет описания' }}</p>
+      <button class="build-route-button" @click="buildRoute" :disabled="!marker">
+        Построить маршрут
+      </button>
+      <button class="close_button" @click="close">Закрыть</button>
     </div>
   </div>
 </template>
 
 <script setup>
+import { defineProps, defineEmits } from 'vue';
+
 const props = defineProps({
-  selectedMarker: {
+  marker: {
     type: Object,
-    default: null,
+    required: true,
   },
 });
 
-const emit = defineEmits(['close']);
+const emit = defineEmits(['close', 'build-route']);
 
 const formatOpeningTimes = (openingTimes) => {
   if (!openingTimes) return 'Нет информации';
   return openingTimes.always_open ? 'Круглосуточно' : 'По расписанию';
 };
 
-const closeModal = () => {
+const close = () => {
   emit('close');
+};
+
+const buildRoute = () => {
+  emit('build-route');
 };
 </script>
 
@@ -62,7 +70,7 @@ const closeModal = () => {
 }
 
 .modal-content {
-  background-color: rgba(40, 40, 40, 1); 
+  background-color: rgba(40, 40, 40, 0.9);
   color: white;
   margin: 15% auto;
   padding: 20px;
@@ -77,14 +85,11 @@ const closeModal = () => {
   font-weight: bold;
 }
 
-.close_button {
-  background-color: #196dff;
-  height: 35px;
-  width: 100%;
-}
-
-.close_button:hover {
-  background-color: green;
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .status-active {
@@ -95,5 +100,30 @@ const closeModal = () => {
 .status-inactive {
   color: red;
   font-weight: bold;
+}
+
+.build-route-button {
+  background-color: #4CAF50;
+  color: white;
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.build-route-button:hover {
+  background-color: #45a049;
+}
+
+.close_button {
+  background-color: #196dff;
+  height: 35px;
+  width: 100%;
+}
+
+.close_button:hover {
+  background-color: green;
 }
 </style>
